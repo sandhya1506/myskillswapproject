@@ -1,0 +1,43 @@
+{% extends base.html%}
+{% block body-block %}
+<h2>Browse our skills</h2>
+
+<p>Sort by:
+    <a href="?sort=type&order=asc">Username /\</a> |
+    <a href="?sort=type&order=desc">\/</a> |
+    <a href="?sort=category&order=asc">Email /\</a> |
+    <a href="?sort=category&order=desc">\/</a> |
+    <a href="?sort=rating&order=asc">Webpage /\</a> |
+    <a href="?sort=rating&order=desc">\/</a> 
+</p>
+
+<table>
+    <thread>
+        <tr>
+            <th>Username</th>
+            <th>skills</th>
+            <th>Types</th>
+            <th>Category</th>
+            <th>rating</th>
+        </tr>
+    </thread>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+        </tr>
+        {% for skill in skills %}
+        <tr>
+            <td>{{ skill.type }}</td>
+            <td>{{ skill.category }}</td>
+        </tr>
+        {% for rate in rating %}
+        <tr>
+            <td>{{ rate.rate }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">No users found.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
