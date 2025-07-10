@@ -1,13 +1,12 @@
 from django.db import models
-from django import forms
 from django.contrib.auth.models import User
+from user_authentication.forms import Form 
 
-# Create your models here.
+class UserProfile(models.model):
+    user = models.OneToOneField(User)
 
-class Form(forms.ModelForm):
+    portfolio = models.URLField(blank=True)
 
-    password = forms.CharField(widget=forms.PasswordInput)
+    def __str__(self):
+        return self.user.username
 
-    class Meta():
-        model = User
-        fields = ('username','email','password')
