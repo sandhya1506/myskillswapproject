@@ -37,7 +37,7 @@
 </head>
 <body>
          <!-- Black header with white text -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+{% comment %} <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="navbar-header">
         <div class="navbar-brand"> <a class="nav-link" href="{% url 'index' %}">Welcome</a> </div>
     </div>
@@ -65,7 +65,7 @@
         </li>
     </ul>
     {% endif %}
-</nav>
+</nav> {% endcomment %}
 
 <div class="container">   
     {% block body-block %}
