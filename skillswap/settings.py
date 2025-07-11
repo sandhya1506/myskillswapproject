@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'skills',
+    # 'skills',
     'contactapp',
-    'user_authentication',
-    'reviewsapp',
+    # 'user_authentication',
+    # 'reviewsapp',
     
 ]
 
@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'registProj.urls'
+ROOT_URLCONF = 'skillswap.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'registProj.wsgi.application'
+WSGI_APPLICATION = 'skillswap.wsgi.application'
 
 
 # Database
