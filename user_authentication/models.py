@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-from user_authentication.forms import Form 
 
-class UserProfile(models.model):
-    user = models.OneToOneField(User)
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User,
+        on_delete=models.CASCADE, )
 
     portfolio = models.URLField(blank=True)
 

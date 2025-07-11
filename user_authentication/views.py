@@ -1,7 +1,5 @@
 from django.shortcuts import render
 from user_authentication.forms import Form, UserProfileForm
-from user_authentication.models import UserProfile
-
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -11,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request,'skills/index.html')
+
 
 @login_required 
 def user_logout(request):

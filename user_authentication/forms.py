@@ -1,4 +1,3 @@
-from django.db import models
 from django import forms
 from django.contrib.auth.models import User
 from user_authentication.models import UserProfile
@@ -13,7 +12,7 @@ class Form(forms.ModelForm):
         model = User
         fields = ('username','email','password')
 
-class UserProfileForm(forms.models):
+class UserProfileForm(forms.ModelForm):
     class Meta():
         model = UserProfile
-        fields = ('portfolio')
+        fields = ('portfolio',)
