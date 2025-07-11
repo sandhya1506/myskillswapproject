@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-#from skills.models import Skills
-#from user_authentication.models import UserProfile
-#from ratings.models import Rating
+from skills.models import AddSkills
+from user_authentication.models import UserProfile
+from reviewsapp.models import Review
 
 
 # Create your views here.
@@ -42,7 +42,7 @@ def skill_view(request, username=None, skill_name=None):
         })
     
 def reverse_skill_view(request, skill_name=None, username=None):
-    skill = get_object_or_404(Skill, name=skill_name)
+    skill = get_object_or_404(AddSkills, name=skill_name)
     users = UserProfile.objects.filter(userprofile_skills=skill)
 
     if username:
