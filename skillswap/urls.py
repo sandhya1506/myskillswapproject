@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from skills import views
+from user_authentication import views 
+from contactapp import views
+from reviewsapp import views
 
 
 urlpatterns = [
@@ -25,4 +28,5 @@ urlpatterns = [
     path('skillboard/', include('skills.urls')),
     path('contact/', include('contactapp.urls')),
     path('reviews/', include('reviewsapp.urls')),
+    path('auth/', include('user_authentication.urls', namespace='user_authentication')),
 ]
