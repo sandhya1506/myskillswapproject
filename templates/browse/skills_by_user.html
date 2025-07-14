@@ -1,0 +1,16 @@
+{% extends base.html %}
+{% block title%}Skills by user{% endblock %}
+{% block body-block %}
+<h1>Skills offered by {{ user.username }}</h1>
+
+<ul>
+    {% for skill in skills %}
+    <li>
+        <a href="{% url 'skill_detail_from_user' username=user.username skill_name=skill.category %}">
+            {{ skill.title }} ({{ skill.category }})
+        </a>
+    </li>
+    {% empty %}
+    <li>This user hasn't offered any skills yet.</li>
+    {% endfor %}
+{%endblock body-block %}

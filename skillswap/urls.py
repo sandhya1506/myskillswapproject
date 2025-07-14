@@ -28,7 +28,7 @@ urlpatterns = [
     path('contact/', include('contactapp.urls')),
     # path('reviews/', include('reviewsapp.urls')),
     path('auth/', include('user_authentication.urls', namespace='user_authentication')),
-    
+    path('browse/', include('browse.urls')),
 ]
 
 
