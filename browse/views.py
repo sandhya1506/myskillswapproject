@@ -1,3 +1,4 @@
+from django.db.models import Avg, Count
 from django.shortcuts import render, get_object_or_404
 from skills.models import AddSkills
 from user_authentication.models import UserProfile
@@ -9,19 +10,22 @@ def browse(request):
     sort = request.GET.get('sort', 'username')
     order = request.GET.get('order', 'asc').lower()
 
-    if sort not in ['username', 'email', 'webpage']:
-        sort = 'username'
+    valid_sorts = ['title', 'category', 'average_rating', 'review_count']
+    if sort not in valid_sorts:
+        sort = 'title'
     if order not in ['asc', 'desc']:
         order = 'asc'
 
     sort_key = sort if order == 'asc' else f'-{sort}'
-    users = UserProfile.objects.select_related('webpage').order_by(sort_key)
+    skills = AddSkills.objects.select_related('user__user') \
+        .annotate(average_rating=Avg('review_rating'), review_count=Count('reviews'))\
+        .order_by(sort_key)
 
     print("Requested sort:", sort, "order:", order)
-    return render(request, 'user_list.html', {
-        'users': users,
+    return render(request, 'browse/browse.html', {
+        'skills': skills,
         'current_sort': sort,
-        'current_order': order
+        'current_order': order,
     })
 
 def skill_view(request, username=None, skill_name=None):

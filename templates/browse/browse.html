@@ -3,40 +3,58 @@
 <h2>Browse our skills</h2>
 
 <p>Sort by:
-    <a href="?sort=type&order=asc">Type /\</a> |
-    <a href="?sort=type&order=desc">\/</a> |
+    <a href="?sort=title&order=asc">Title /\</a> |
+    <a href="?sort=title&order=desc">\/</a> |
     <a href="?sort=category&order=asc">Category /\</a> |
     <a href="?sort=category&order=desc">\/</a> |
-    <a href="?sort=rating&order=asc">Rating /\</a> |
-    <a href="?sort=rating&order=desc">\/</a> 
+    <a href="?sort=average_rating&order=asc">Rating /\</a> |
+    <a href="?sort=average_rating&order=desc">\/</a> |
+    <a href="?sort=review_count&order=asc">Review count ↑</a> |
+<a href="?sort=review_count&order=desc">↓</a>
+    
 </p>
 
 <table>
     <thread>
         <tr>
             <th>Username</th>
-            <th>skills</th>
-            <th>Types</th>
+            <th>Title</th>
             <th>Category</th>
             <th>rating</th>
+            <th>Reviews</th>
         </tr>
     </thread>
     <tbody>
-        {% for user in users %}
-        <tr>
-            <td>{{ user.username }}</td>
-        </tr>
         {% for skill in skills %}
         <tr>
-            <td>{{ skill.type }}</td>
+            <td>
+              <a href="{% url 'skills_by_user' username=skill.user.user.username %}">
+                {{ skill.user.user.username }}
+              </a>
+            </td>
+            <td>
+              <a href="{% url 'skill_detail_from_user' username=skill.user.user.username skill_name=skill.title %}">
+                {{ skill.title }}
+              </a>
+            </td>
             <td>{{ skill.category }}</td>
-        </tr>
-        {% for rate in rating %}
-        <tr>
-            <td>{{ rate.rate }}</td>
+            <td>
+                {% if skill.average_rating %}
+                    {{ skill.rating|floatformat:1 }}
+                {% else %}
+                No ratings
+                {% endif %}
+                </td>
+            <td>
+                {% if skill.review_count %}
+                    {{ skill.review_count }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
         </tr>
         {% empty %}
-        <tr><td colspan="5">No users found.</td></tr>
+        <tr><td colspan="5">No skills found.</td></tr>
         {% endfor %}
     </tbody>
 </table>
