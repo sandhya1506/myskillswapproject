@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'contactapp',
     'user_authentication',
     'reviewsapp',
+    'browse',
     
 ]
 

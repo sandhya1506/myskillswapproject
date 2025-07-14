@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 from django.contrib.auth.models import User 
 
 CATEGORIES =  [
@@ -23,3 +24,6 @@ class AddSkills(models.Model):
         return self.title
 
 
+@property
+def average_rating(self):
+    return self.reviewsapp.aggregate(Avg('rating'))['rating__avg'] or 0

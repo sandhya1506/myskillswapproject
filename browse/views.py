@@ -18,7 +18,7 @@ def browse(request):
 
     sort_key = sort if order == 'asc' else f'-{sort}'
     skills = AddSkills.objects.select_related('user__user') \
-        .annotate(average_rating=Avg('review_rating'), review_count=Count('reviews'))\
+        .annotate(avg_rating=Avg('average_rating'), review_count=Count('reviews'))\
         .order_by(sort_key)
 
     print("Requested sort:", sort, "order:", order)

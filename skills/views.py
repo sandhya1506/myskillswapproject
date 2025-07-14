@@ -24,3 +24,4 @@ def addSkills(request):
     else:
         form = forms.AddSkillsForm()
     return render(request, 'skills/addskills.html', {'form': form})
+
