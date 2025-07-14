@@ -17,7 +17,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from skills import views
-from user_authentication import views 
 # from contactapp import views
 # from reviewsapp import views
 
