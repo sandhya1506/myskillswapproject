@@ -30,3 +30,6 @@ urlpatterns = [
     # path('reviews/', include('reviewsapp.urls')),
     path('auth/', include('user_authentication.urls', namespace='user_authentication')),
 ]
+
+
+

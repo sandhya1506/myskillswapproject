@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
-{% block content %}
-<h1>This is the contact page</h1>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Submit</button>
-</form>
+
+{%  block body_block %}
+  <h1>Contact Us</h1>
+  <!-- <p><a href="{% url 'contactapp:contact_index' %}">Submit Another Message</a></p> -->
+  
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
 {% endblock %}
