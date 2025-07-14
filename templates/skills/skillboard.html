@@ -4,11 +4,11 @@
 
 {% block body-block %}
 Do you have a skill that you want to share? <br />
-Share your skills <a href="{% url 'addSkills' %}" >here </a>!
+Share your skills <a href="{% url 'skills:addSkills' %}" >here </a>!
 
 <h1> Skills Board</h1>
 
-{% for x in skills %}
+{% for x in Addskills %}
 <article>
     <h2>
          {{x.title}}
@@ -17,5 +17,5 @@ Share your skills <a href="{% url 'addSkills' %}" >here </a>!
     <p>Description: {{x.description}}</p>
 
 </article>
-
+{% endfor %}
 {% endblock %}

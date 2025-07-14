@@ -17,6 +17,7 @@ class AddSkills(models.Model):
     availability = models.TextField()
     location = models.TextField()
     profilePic = models.ImageField(default='fallback.png', blank=True)
+    average_rating = models.FloatField(default=0.0)
 
     def __str__(self):
         return self.title

@@ -66,7 +66,6 @@
         <a class="nav-link" href="{% url 'skills:skillboard' %}">SKILLS BOARD </a>
       </li>
     </ul>
-
     
       {% if user.is_authenticated %}
       <ul class="navbar-nav">
@@ -77,14 +76,14 @@
      {% else %}
       <ul class="navbar-nav">
           <li class="nav-item ">
-            <a class="nav-link" href="#">LOGIN</a>
+            <a class="nav-link" href="auth:user_login">LOGIN</a>
           </li>
       </ul>
      {% endif %}
 
      <ul class="navbar-nav">
       <li class="nav-item ">
-        {% comment %} <a class="nav-link" href={% url 'contactapp:contact_index' %}>CONTACT</a> {% endcomment %}
+        <a class="nav-link" href={% url 'contactapp:contact_index' %}>CONTACT</a>
       </li>
     </ul>
    
