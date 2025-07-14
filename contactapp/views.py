@@ -10,7 +10,7 @@ def contact_index(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             message = form.save()
-            return render(request, 'contactapp/thankyou.html', {
+            return render(request, 'contactapp/thankyou_page.html', {
                 'name': message.name,
                 'email': message.email,
                 'message': message.message,
