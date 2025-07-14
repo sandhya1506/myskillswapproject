@@ -1,6 +1,10 @@
+
 from django.shortcuts import render, redirect
 
 from .forms import ContactForm
+from .models import ContactMessage
+
+
 
 
 SUBMISSIONS = []
@@ -8,18 +12,17 @@ SUBMISSIONS = []
 def contact_index(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
+
+
         if form.is_valid():
-            message = form.save()
-            return render(request, 'contactapp/thankyou_page.html', {
-                'name': message.name,
-                'email': message.email,
-                'message': message.message,
-            })
+           
+            SUBMISSIONS.append(form.cleaned_data)
+            return redirect('contactapp:thankyou_page')
     else:
         form = ContactForm()
-    return render(request, 'contactapp/contact_index.html', {'form': form})
+    return render(request, 'contact_templates/contact_index.html', {'form': form})
 
 
 
 def thankyou_page(request):
-    return render(request, 'contactapp/thankyou_page.html', {'submissions': SUBMISSIONS})
+    return render(request, 'contact_templates/thankyou_page.html', {'submissions': SUBMISSIONS})

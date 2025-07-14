@@ -3,6 +3,7 @@ from user_authentication.models import UserProfile
 
 # Create your models here.
 
+
 class ContactMessage(models.Model):
     sender= models.ForeignKey(UserProfile, related_name='sent_messages', on_delete=models.CASCADE)
     recipient = models.ForeignKey(UserProfile, related_name='recieved_messages', on_delete=models.CASCADE)

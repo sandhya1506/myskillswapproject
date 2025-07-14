@@ -30,3 +30,6 @@ urlpatterns = [
     path('auth/', include('user_authentication.urls', namespace='user_authentication')),
     
 ]
+
+
+
