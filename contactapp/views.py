@@ -20,9 +20,9 @@ def contact_index(request):
             return redirect('contactapp:thankyou_page')
     else:
         form = ContactForm()
-    return render(request, 'contact_templates/contact_index.html', {'form': form})
+    return render(request, 'contactapp/contact_index.html', {'form': form})
 
 
 
 def thankyou_page(request):
-    return render(request, 'contact_templates/thankyou_page.html', {'submissions': SUBMISSIONS})
+    return render(request, 'contactapp/thankyou_page.html', {'submissions': SUBMISSIONS})
