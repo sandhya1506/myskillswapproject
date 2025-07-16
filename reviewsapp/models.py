@@ -1,17 +1,11 @@
 from django.db import models
 from user_authentication.models import UserProfile
-
-class Skill(models.Model):  
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-
-    def __str__(self):
-        return self.title
+from skills.models import AddSkills
 
 class Review(models.Model):
     reviewer = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='given_reviews')
     reviewee = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='received_reviews')
-    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
+    skill = models.ForeignKey(AddSkills, on_delete=models.CASCADE)
     rating = models.IntegerField()
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
