@@ -45,3 +45,19 @@
   outline: none;
   border-color: #007bff;
 }
+
+/* Style for the Register submit button */
+.registration-page form input[type="submit"] {
+  background-color: #007bff;    /* Bootstrap‑style blue */
+  color: #fff;                   /* white text for contrast */
+  padding: 0.75rem 1.5rem;       /* vertical 12px, horizontal 24px */
+  border: none;                  /* remove default border */
+  border-radius: 0.25rem;        /* soften corners */
+  font-size: 1rem;               /* matching your other buttons */
+  cursor: pointer;               /* pointer cursor on hover */
+  transition: background 0.2s;   /* smooth hover transition */
+}
+
+.registration-page form input[type="submit"]:hover {
+  background-color: #0056b3;     /* darker blue on hover */
+}

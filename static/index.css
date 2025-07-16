@@ -75,8 +75,8 @@ p {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-  background-color: rgba(255,255,255,0.15);
-  color: #fff;
+  background-color: transparent;      /* no background tint */
+  color: var(--brand-gold) !important;         /* gold text */
   text-decoration: none;
 }
 
@@ -157,3 +157,29 @@ p {
   }
 }
 
+/* Footer styling */
+footer.navbar {
+  display: flex;                   
+  justify-content: flex-start;     
+  padding: 1rem 2rem;              
+  border-top: 2px solid var(--brand-gold);
+}
+
+/* Footer nav items spacing */
+footer.navbar .nav-item {
+  margin: 0 1rem;                   
+}
+
+/* Footer link default state */
+footer.navbar .nav-link {
+  color: #ccc;                      
+  padding: 0.5rem 0;                
+  transition: color var(--transition-speed);
+}
+
+/* Footer link hover/focus */
+footer.navbar .nav-link:hover,
+footer.navbar .nav-link:focus {
+  color: var(--brand-gold);        
+  text-decoration: none;
+}
