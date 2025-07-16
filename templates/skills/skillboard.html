@@ -3,10 +3,42 @@
 
 
 {% block body-block %}
-Do you have a skill that you want to share? <br />
-Share your skills <a href="{% url 'addSkills' %}" >here </a>!
 
-<h1> Skills Board</h1>
+<div id="OffReq" style="display:block;">
+    <h1>Share skills! </h1>
+
+    <h2>What would you like to do?</h2>
+
+    <button type="button" onclick="userChoice('offer')">I want to offer</button>
+    <button type="button" onclick="userChoice('request')">I want to request</button>
+</div>
+
+{% comment %} <img src="{% static 'my_app/example.jpg' %}" alt="My image"> {% endcomment %}
+
+<!-- Offer Form  -->
+<div id="offerForm" style="display:none;">
+    <h3>Offer Skills</h3>
+    <form method="post" action="{% url 'skills:addSkills' %}" >   
+        {% csrf_token %}
+        {{ addskills.as_p }}
+        <button type="submit">Submit Offer</button>
+    </form>
+</div>
+
+<!-- Request Form -->
+<div id="requestForm" style="display:none;">
+    <h3>Request Skills</h3>
+    <form method="post" action="{% url 'skills:reqSkills' %}">
+        {% csrf_token %}
+        {{ getskills.as_p }}
+        <button type="submit">Submit Request</button>
+    </form>
+</div>
+
+
+
+<p></p><p></p><p></p>
+
 
 {% for x in skills %}
 <article>
@@ -17,5 +49,6 @@ Share your skills <a href="{% url 'addSkills' %}" >here </a>!
     <p>Description: {{x.description}}</p>
 
 </article>
+{% endfor %}
 
 {% endblock %}
