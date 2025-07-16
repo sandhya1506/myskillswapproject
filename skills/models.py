@@ -23,7 +23,7 @@ class AddSkills(models.Model):
         return self.title
     
 class RequestSkills(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=None)
     category = models.CharField(max_length=2, choices=CATEGORIES, default='OT')
     location = models.CharField(max_length=100)
     description = models.TextField()
