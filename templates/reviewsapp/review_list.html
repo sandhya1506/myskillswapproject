@@ -5,8 +5,25 @@
 </head>
 <body>
     <h1>All Reviews</h1>
-    <p>This is a placeholder page to list all submitted reviews.</p>
-   
+
+    {% if reviews %}
+        <ul>
+        {% for review in reviews %}
+            <li>
+                <strong>{{ review.name }}</strong><br>
+                {% for i in "12345"|slice:":review.rating"|make_list %}
+                    ⭐
+                {% endfor %}
+                ({{ review.rating }}/5)<br>
+                {{ review.comment }}<br>
+                <em>{{ review.created_at|date:"M d, Y H:i" }}</em>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No reviews yet.</p>
+    {% endif %}
+
     <a href="{% url 'add_review' %}">Add a Review</a>
 </body>
 </html>

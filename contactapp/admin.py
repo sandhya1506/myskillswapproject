@@ -1,7 +1,12 @@
 
 from django.contrib import admin
-# Register your models here.
 
-#from .models import ContactMessage
+<<<<<<< HEAD
+from .models import ContactMessage
 
-#admin.site.register(ContactMessage)
+=======
+
+from .models import ContactMessage
+
+>>>>>>> c8a0033 (fixing admin)
+admin.site.register(ContactMessage)

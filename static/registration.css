@@ -1,0 +1,79 @@
+/* registration.css */
+
+/* Scope all rules under the registration-page wrapper */
+.registration-page {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 2rem;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.registration-page h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.registration-page h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+  text-align: center;
+}
+
+.registration-page form {
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-page form p {
+  margin-bottom: 1rem;
+}
+
+.registration-page form input[type="text"],
+.registration-page form input[type="email"],
+.registration-page form input[type="password"],
+.registration-page form input[type="file"],
+.registration-page form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.registration-page form input:focus,
+.registration-page form textarea:focus {
+  outline: none;
+  border-color: #0066cc;
+}
+
+.registration-page form input[type="submit"] {
+  align-self: center;
+  padding: 0.75rem 2rem;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.registration-page form input[type="submit"]:hover {
+  background-color: #004999;
+}
+
+/* Thank‑you message styling */
+.registration-page .thankyou {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.25rem;
+  color: #2a7f62;
+}

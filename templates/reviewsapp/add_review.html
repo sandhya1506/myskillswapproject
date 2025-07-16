@@ -5,13 +5,16 @@
 </head>
 <body>
     <h1>Add a New Review</h1>
-    <form method="post">
-        {% csrf_token %}
-        
-        <label for="review">Review:</label><br>
-        <textarea name="review" rows="4" cols="50" required></textarea><br><br>
-        <input type="submit" value="Submit">
-    </form>
-    <a href="{% url 'review_list' %}">Back to Reviews</a>
+
+    {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+        <p><a href="{% url 'review_list' %}">Back to Reviews</a></p>
+    {% else %}
+        <p>You must be <a href="{% url 'login' %}">logged in</a> to submit a review.</p>
+    {% endif %}
 </body>
 </html>
