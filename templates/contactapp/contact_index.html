@@ -3,12 +3,16 @@
 {% block body-block %}
 
 
+<div id="contact-page">
+
   <h1>Contact Us</h1>
-  <p><a href="{% url 'contactapp:contact_index' %}">Contact Page</a></p>
+  <p><a href="{% url 'contactapp:contact_index' %}">Contact form</a></p>
     
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
   </form>
+  </div>
 {% endblock %}
+
