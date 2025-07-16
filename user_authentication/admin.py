@@ -1,5 +1,6 @@
 from django.contrib import admin
 <<<<<<< HEAD
+<<<<<<< HEAD
 from .models import UserProfile
 
 
@@ -19,3 +20,5 @@ admin.site.register(UserProfile)
 # admin.site.register(UserProfileForm)
 # admin.site.register(Form)
 >>>>>>> c8a0033 (fixing admin)
+=======
+>>>>>>> faef519 (updating admin still)
