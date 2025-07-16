@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.db.models import Avg
 from user_authentication.models import UserProfile
 
@@ -12,7 +13,7 @@ CATEGORIES =  [
 ]
 
 class AddSkills(models.Model):
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='userOffer')
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
     category = models.CharField(max_length=2, choices=CATEGORIES, default='OT')
@@ -25,7 +26,7 @@ class AddSkills(models.Model):
         return self.title
     
 class RequestSkills(models.Model):
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='userReq')
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
     category = models.CharField(max_length=2, choices=CATEGORIES, default='OT')

@@ -24,29 +24,26 @@ def addSkills(request):
     if request.method == 'POST':
         added=AddSkillsForm(request.POST) #creates instance of ModelForm
         if added.is_valid():
-            added.save(commit=False) #create filled in instance of Model, do not commit
-            added.user=request.user  #add user to the form - is the connections CORRECT?? XX
-            added.save()             #commit to DB
+            fromDB=added.save(commit=False) #create filled in instance of Model, do not commit
+            fromDB.user=request.user  #add user to the form - is the connections CORRECT?? XX
+            fromDB.save()             #commit to DB
             return redirect('skills:skillboard')
         else:
             return redirect('skills:skillboard')
     else: #GET
         return redirect('skills:skillboard')
       
-#@login_required
+@login_required
 def reqSkills(request):
     if request.method == 'POST':
-        #print('INSIDE REQ POST.')
         req=RequestSkillsForm(request.POST) #creates instance of ModelForm
-        #print('PAST FORM REQ.')
         if req.is_valid():
-            #print('ITS VALID')
-            req.save(commit=False) #create filled in instance of Model, do not commit
-            #req.user=request.user  #add user to the form
-            req.save()             #commit to DB
+            fromDB=req.save(commit=False) #create filled in instance of Model, 
+                                   #do not commit-don't forget to save the instance
+            fromDB.user=request.user  #add user to the form
+            fromDB.save()             #commit to DB
             return redirect('skills:skillboard')
         else:
-            #print('REQ NOT VALID.')
             return redirect('skills:skillboard')
     else: #GET
         return redirect('skills:skillboard')
