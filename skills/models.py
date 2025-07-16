@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import Avg
-from django.contrib.auth.models import User 
+from user_authentication.models import UserProfile
 
 CATEGORIES =  [
         ('TC', 'Technical'),
@@ -10,7 +10,7 @@ CATEGORIES =  [
 ]
 
 class AddSkills(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=None)
     date = models.DateField()
     title = models.CharField(max_length=100)
     category = models.CharField(max_length=2, choices=CATEGORIES, default='OT')
