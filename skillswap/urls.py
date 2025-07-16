@@ -27,6 +27,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('skillboard/', include('skills.urls')),
     path('contact/', include('contactapp.urls')),
-    # path('reviews/', include('reviewsapp.urls')),
+    path('reviews/', include('reviewsapp.urls')),
     path('auth/', include('user_authentication.urls', namespace='user_authentication')),
+    path('auth/', include('django.contrib.auth.urls')),
 ]
