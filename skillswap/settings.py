@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'contactapp',
     'user_authentication',
     'reviewsapp',
+    'browse',
     
 ]
 
@@ -146,3 +147,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #LOGIN 
+LOGIN_URL = '/auth/login/'

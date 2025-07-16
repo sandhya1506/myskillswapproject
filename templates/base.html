@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'index.css' %}">
   <script src="{% static 'skills.js' %}" defer></script>
+  <link rel="stylesheet" href="{% static 'login.css' %}">
+
   
  
   
@@ -66,25 +68,29 @@
         <a class="nav-link" href="{% url 'skills:skillboard' %}">SKILLS BOARD </a>
       </li>
     </ul>
-
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'browse:browse' %}">BROWSE </a>
+      </li>
+    </ul>
     
       {% if user.is_authenticated %}
       <ul class="navbar-nav">
           <li class="nav-item ">
-            <a class="nav-link" href="#">LOGOUT</a>
+            <a class="nav-link" href="{% url 'user_authentication:user_logout' %}">LOGOUT</a>
           </li>
       </ul>
      {% else %}
       <ul class="navbar-nav">
           <li class="nav-item ">
-            <a class="nav-link" href="#">LOGIN</a>
+            <a class="nav-link" href="{% url 'user_authentication:user_login' %}">LOGIN</a>
           </li>
       </ul>
      {% endif %}
 
      <ul class="navbar-nav">
       <li class="nav-item ">
-        <a class="nav-link" href={% url 'contactapp:contact_index' %}>CONTACT</a>
+        <a class="nav-link" href="{% url 'user_authentication:register' %}">REGISTER</a>
       </li>
     </ul>
    

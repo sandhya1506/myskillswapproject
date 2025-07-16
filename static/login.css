@@ -1,0 +1,61 @@
+/* Container */
+#login-page .login-container {
+  max-width: 400px !important;
+  margin: 80px auto !important;
+  padding: 2rem !important;
+  background: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  font-family: Arial, sans-serif !important;
+}
+
+/* Heading */
+#login-page .login-container h1 {
+  margin-bottom: 1.5rem !important;
+  font-size: 1.75rem !important;
+  color: #333 !important;
+  text-align: center !important;
+}
+
+/* Labels */
+#login-page .login-container label {
+  display: block !important;
+  margin-bottom: 0.5rem !important;
+  font-weight: bold !important;
+  color: #555 !important;
+}
+
+/* Text inputs */
+#login-page .login-container input[type="text"],
+#login-page .login-container input[type="password"] {
+  width: 100% !important;
+  padding: 0.75rem !important;
+  margin-bottom: 1.25rem !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  font-size: 1rem !important;
+  transition: border-color 0.2s !important;
+}
+
+#login-page .login-container input[type="text"]:focus,
+#login-page .login-container input[type="password"]:focus {
+  outline: none !important;
+  border-color: #007bff !important;
+}
+
+/* Submit button */
+#login-page .login-container input[type="submit"] {
+  width: 100% !important;
+  padding: 0.75rem !important;
+  background: #007bff !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 1rem !important;
+  cursor: pointer !important;
+  transition: background 0.2s !important;
+}
+
+#login-page .login-container input[type="submit"]:hover {
+  background: #0056b3 !important;
+}
