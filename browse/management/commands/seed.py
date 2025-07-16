@@ -42,16 +42,17 @@ fake.add_provider(LN_provider)
 fake.add_provider(OT_provider)
 fake.add_provider(category_provider)
 
-NUM_USERS = 4
-NUM_SKILLS = 4
-NUM_CONTACTS = 4
-NUM_REVIEWS = 4
+NUM_USERS = 200
+NUM_SKILLS = 250
+NUM_CONTACTS = 50
+NUM_REVIEWS = 600
 
 class Command(BaseCommand):
     help = "Populate the DB with demo data (users, exchanges, contact messages)"
 
 
     def handle(self, *args, **options):
+        users = []
         profiles = []
         for _ in range(NUM_USERS):
             user = User.objects.create_user(
@@ -64,51 +65,52 @@ class Command(BaseCommand):
                 portfolio=fake.url(),
                 profile_pic='media/profile_pics/default.jpg',
             )
+            users.append(user)
             profiles.append(profile)
         
         skills_objs = []
         for _ in range(NUM_SKILLS):
-            owner_profile = random.choice(profiles)
+            owner = random.choice(users)
             cat = fake.category()
             title = getattr(fake, cat)()
 
-            skills_objs.append(
-                AddSkills.objects.create(
-                    user=owner_profile,
-                    date=fake.date(),
-                    category=cat,
-                    title=title,
-                    availability=fake.boolean(),
-                    location=fake.country(),
-                    description=fake.sentence()
-                )
+            
+            skill =AddSkills.objects.create(
+                user=owner,
+                date=fake.date(),
+                category=cat,
+                title=title,
+                availability=fake.boolean(),
+                location=fake.country(),
+                description=fake.sentence(),
             )
+            skills_objs.append(skill)
 
         contacts_objs = []
         for _ in range(NUM_CONTACTS):
-            sender_profile = random.choice(profiles)
-            contacts_objs.append(
-                ContactMessage.objects.create(
-                    sender=sender_profile,
-                    recipient=random.choice(profiles),
-                    skill=random.choice(skills_objs),
-                    email=sender_profile.user.email,
-                    submitted_at=fake.date()
-                )
+            sender_profile = random.choice(users)
+            
+            contact = ContactMessage.objects.create(
+                sender=sender_profile,
+                recipient=random.choice(users),
+                skill=random.choice(skills_objs),
+                email=sender_profile.email,
+                submitted_at=fake.date(),
             )
+            contacts_objs.append(contact)
 
         reviews_objs = []
         for _ in range(NUM_REVIEWS):
             skill = random.choice(skills_objs)
-            reviews_objs.append(
-                Review.objects.create(
-                    skill=skill,
-                    reviewer = random.choice(profiles),
-                    reviewee = skill.user.username,
-                    rating = random.randrange(1,6),
-                    comment = fake.sentence(),
-                    created_at = fake.date_time_this_year(),
-                )
+            
+            review = Review.objects.create(
+                skill=skill,
+                reviewer = random.choice(users),
+                reviewee = skill.user,
+                rating = random.randrange(1,6),
+                comment = fake.sentence(),
+                created_at = fake.date_time_this_year(),
             )
+            reviews_objs.append(review)
         
-        self.stdout.write(self.style.SUCCESS(f"Created {NUM_USERS} user profiles with {NUM_SKILLS} skills, written {NUM_REVIEWS} and created {NUM_CONTACTS} of contacts."))
+        self.stdout.write(self.style.SUCCESS(f"Created {NUM_USERS} user profiles with {NUM_SKILLS} skills, written {NUM_REVIEWS} reviews and {NUM_CONTACTS} of contacts was made between users."))
