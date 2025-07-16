@@ -28,11 +28,7 @@ urlpatterns = [
     path('contact/', include('contactapp.urls')),
     path('reviews/', include('reviewsapp.urls')),
     path('auth/', include('user_authentication.urls', namespace='user_authentication')),
-<<<<<<< HEAD
     path('browse/', include('browse.urls', namespace="browse")),
-=======
-    path('auth/', include('django.contrib.auth.urls')),
->>>>>>> origin/reviewsfeature
 ]
 
 
