@@ -1,10 +1,10 @@
 from django.db import models
-from user_authentication.models import UserProfile
+from django.contrib.auth.models import User
 from skills.models import AddSkills
 
 class Review(models.Model):
-    reviewer = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='given_reviews')
-    reviewee = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='received_reviews')
+    reviewer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='given_reviews')
+    reviewee = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_reviews')
     skill = models.ForeignKey(AddSkills, on_delete=models.CASCADE)
     rating = models.IntegerField()
     comment = models.TextField()
