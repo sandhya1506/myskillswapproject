@@ -1,8 +1,8 @@
 from django.db.models import Avg, Count
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from skills.models import AddSkills
-from user_authentication.models import UserProfile
+from django.contrib.auth.models import User
 from reviewsapp.models import Review
 
 
@@ -40,12 +40,12 @@ def browse(request):
     })
 
 def skill_view(request, username=None, skill_name=None):
-    user = get_object_or_404(UserProfile, username)
-    profile = user.userprofile
+    user = get_object_or_404(User, username=username)
     
+    skills_qs = AddSkills.objects.filter(user=user)
 
     if skill_name:
-        skill = get_object_or_404(skills, name=skill_name)
+        skill = get_object_or_404(skills_qs, title=skill_name)
         return render(request, 'browse/skill_detail.html', {
             'user': user,
             'skill': skill,
@@ -53,21 +53,36 @@ def skill_view(request, username=None, skill_name=None):
     else:
         return render(request, 'browse/skills_by_user.html',{
             'user': user,
-            'skills': skills,
+            'skills': skills_qs,
         })
     
-def reverse_skill_view(request, skill_name=None, username=None):
-    skill = get_object_or_404(AddSkills, name=skill_name)
-    users = UserProfile.objects.filter(userprofile_skills=skill)
+def reverse_skill_view(request, title, username=None):
+    skill = get_object_or_404(AddSkills, title=title)
+
+    users_qs = User.objects.filter(addskills_set=skill)
 
     if username:
-        user = get_object_or_404(users, username=username)
+        user = get_object_or_404(users_qs, username=username)
         return render(request, 'browse/skill_detail.html', {
             'user': user,
-            'skills': skill,
-        })
-    else:
-        return render(request, 'browse/user_by_skill.html', {
             'skill': skill,
-            'users': users,
         })
+
+    return render(request, 'browse/user_by_skill.html', {
+        'skill': skill,
+        'users': users_qs,
+    })
+
+def users_by_skill(request, slug):
+    skills_qs = AddSkills.objects.filter(slug=slug)
+
+    skills_qs = get_list_or_404(AddSkills, slug=slug)
+
+    users = User.objects.filter(skills__slug=slug).distinct()
+    skill_ref = skills_qs[0]
+
+    return render(request, 'browse/users_by_skill.html', {
+        'skill': skill_ref,
+        'users': users,
+        'rows': skills_qs
+    })

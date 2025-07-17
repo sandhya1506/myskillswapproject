@@ -56,7 +56,7 @@ class Command(BaseCommand):
         profiles = []
         for _ in range(NUM_USERS):
             user = User.objects.create_user(
-                username=fake.user_name(),
+                username=fake.unique.user_name(),
                 email=fake.unique.email(),
                 password=fake.password(length=12),
             )

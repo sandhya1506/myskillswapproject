@@ -35,9 +35,9 @@
               </a>
             </td>
             <td>
-              <a href="{% url 'browse:skill_detail_from_user' username=skill.user.username skill_name=skill.title %}">
-                {{ skill.title }}
-              </a>
+                <a href="{% url 'browse:users_by_skill' slug=skill.slug %}">
+                    {{ skill.title }}
+                </a>
             </td>
             <td>{{ skill.category }}</td>
             <td>
