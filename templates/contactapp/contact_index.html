@@ -1,57 +1,18 @@
 {% extends 'base.html' %}
 
 {% block body-block %}
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f2f7fb;
-      margin: 0;
-      padding: 20px;
-    }
 
-    h1 {
-      color: rgb(107, 145, 233);
-      text-align: center;
-    }
 
-    form {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      max-width: 500px;
-      margin: 20px auto;
-    }
-
-    button[type="submit"] {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #2980b9;
-    }
-
-    a {
-      display: block;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #3498db;
-      text-decoration: none;
-    }
-  </style>
+<div id="contact-page">
 
   <h1>Contact Us</h1>
-  <p><a href="{% url 'contactapp:contact_index' %}">Contact Page</a></p>
+  <p><a href="{% url 'contactapp:contact_index' %}">Contact form</a></p>
     
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
   </form>
+  </div>
 {% endblock %}
+

@@ -2,11 +2,14 @@
 
 {%  block body-block %}
 
+
+<div id="thankyou-page">
+  <div class="container">
   <h1>Thank You for Your Message!</h1>
   <p><a href="{% url 'contactapp:contact_index' %}">Back to Contact Page</a></p>
 
    
-  <!-- <h2>All Submissions:</h2>
+  <h2>All Submissions:</h2>
   <ul>
     {% for submission in submissions %}
       <li><strong>{{ submission.name }}</strong> ({{ submission.email }}) said: "{{ submission.message }}"</li>
@@ -14,7 +17,8 @@
       <li>No messages yet.</li>
     {% endfor %}
   </ul>
-     -->
+  </div>
+</div>
 
 {% endblock %}
 
