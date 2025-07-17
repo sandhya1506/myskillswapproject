@@ -1,10 +1,11 @@
 from django.urls import path
-from skills import views
+from skills.views import addSkills,reqSkills, skillboard
 
 app_name='skills'
 
 urlpatterns = [
-    path('skillboard/', views.skillboard, name='skillboard'),
-    path('addSkills/', views.addSkills, name='addSkills'),
+    path('', skillboard, name='skillboard'),
+    path('addSkills/', addSkills, name='addSkills'),
+    path('reqSkills/', reqSkills, name='reqSkills'),
     
 ]
