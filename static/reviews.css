@@ -1,57 +1,77 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 10%;
 }
 
-h1 {
-    text-align: center;
-    color: #444;
-    margin-bottom: 30px;
+.review-card {
+  background-color: rgb(185, 239, 248);
+  border: 2px solid rgb(149, 108, 5);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    max-width: 700px;
-    margin: 0 auto;
+.review-card strong {
+  color: rgb(149, 108, 5);
+  font-weight: bold;
 }
 
-li {
-    background-color: #fff;
-    border-left: 5px solid #ffc107;
-    margin-bottom: 15px;
-    padding: 15px 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    border-radius: 5px;
+.stars {
+  font-size: 24px;
+  color: #f39c12;
+  display: inline-block;
 }
 
-li strong {
-    font-size: 1.1em;
-    color: #222;
+.rating {
+  font-size: 16px;
+  margin-left: 8px;
+  color: #333;
 }
 
-li em {
-    font-size: 0.9em;
-    color: #666;
+.comment {
+  font-style: italic;
+  margin-top: 10px;
+  font-size: 16px;
 }
 
-a {
-    display: block;
-    text-align: center;
-    margin-top: 30px;
-    text-decoration: none;
-    color: #007BFF;
-    font-weight: bold;
+.timestamp {
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
 }
 
-a:hover {
-    text-decoration: underline;
+.add-review-btn {
+  display: inline-block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: rgb(149, 108, 5);
+  color: white;
+  font-family: fantasy;
+  font-size: 16px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
-.star-rating {
-    color: #FFD700;
-    font-size: 1.2em;
+.add-review-btn:hover {
+  background-color: black;
+  color: rgb(185, 239, 248);
+  transform: scale(1.1);
+}
+
+.star {
+  font-size: 30px;
+  color: #f39c12;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-right: 5px;
+}
+
+.star:hover,
+.star.selected {
+  transform: scale(1.3);
 }
