@@ -1,7 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Review</title>
+    <title>Add a New Review</title>
+    <link rel="stylesheet" href="{% static 'reviewsapp/reviews.css' %}">
+    <style>
+        .star-rating {
+            direction: rtl;
+            display: inline-flex;
+        }
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+        .star-rating label {
+            font-size: 2rem;
+            color: lightgray;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star-rating input[type="radio"]:checked ~ label {
+            color: gold;
+        }
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: gold;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>Add a New Review</h1>
@@ -9,10 +38,23 @@
     {% if user.is_authenticated %}
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+
+            <label>Rating:</label><br>
+            <div class="star-rating">
+                {% for i in "54321" %}
+                    <input type="radio" name="rating" id="star{{ i }}" value="{{ i }}">
+                    <label for="star{{ i }}">&#9733;</label>
+                {% endfor %}
+            </div>
+
+            <br><br>
+            <label for="comment">Comment:</label><br>
+            <textarea name="comment" placeholder="Write your review here..." required></textarea>
+
+            <br><br>
             <input type="submit" value="Submit">
         </form>
-        <p><a href="{% url 'review_list' %}">Back to Reviews</a></p>
+        <p><a href="{% url 'review_list' %}">← Back to Reviews</a></p>
     {% else %}
         <p>You must be <a href="{% url 'login' %}">logged in</a> to submit a review.</p>
     {% endif %}
