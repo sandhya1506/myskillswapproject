@@ -1,12 +1,12 @@
 from django.db import models
-from user_authentication.models import UserProfile
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 
 class ContactMessage(models.Model):
-    sender= models.ForeignKey(UserProfile, related_name='sent_messages', on_delete=models.CASCADE)
-    recipient = models.ForeignKey(UserProfile, related_name='recieved_messages', on_delete=models.CASCADE)
+    sender= models.ForeignKey(User, related_name='sent_messages', on_delete=models.CASCADE)
+    recipient = models.ForeignKey(User, related_name='recieved_messages', on_delete=models.CASCADE)
     skill = models.ForeignKey('skills.AddSkills', related_name="skills_interested", on_delete=models.CASCADE)
     email= models.EmailField()
     message= models.TextField()
