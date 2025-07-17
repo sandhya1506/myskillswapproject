@@ -2,8 +2,10 @@ from django.db.models import Avg, Count
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from skills.models import AddSkills
-from django.contrib.auth.models import User
 from reviewsapp.models import Review
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 # Create your views here.
@@ -78,7 +80,7 @@ def users_by_skill(request, slug):
 
     skills_qs = get_list_or_404(AddSkills, slug=slug)
 
-    users = User.objects.filter(skills__slug=slug).distinct()
+    users = User.objects.filter(userOffer__slug=slug).distinct()
     skill_ref = skills_qs[0]
 
     return render(request, 'browse/users_by_skill.html', {

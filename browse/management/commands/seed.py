@@ -3,11 +3,13 @@ from django.core.management.base import BaseCommand
 from faker.providers import DynamicProvider
 import random
 from faker import Faker
-from django.contrib.auth.models import User
 from user_authentication.models import UserProfile
 from reviewsapp.models import Review
 from contactapp.models import ContactMessage
 from skills.models import AddSkills, RequestSkills
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 TC_provider = DynamicProvider(
      provider_name="TC",
@@ -77,7 +79,7 @@ class Command(BaseCommand):
             
             skill =AddSkills.objects.create(
                 user=owner,
-                date=fake.date(),
+                created=fake.date(),
                 category=cat,
                 title=title,
                 availability=fake.boolean(),

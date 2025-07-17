@@ -2,7 +2,9 @@ from django.db import models
 from django.conf import settings
 from django.db.models import Avg
 from django.utils.text import slugify
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 CATEGORIES =  [
         ('TC', 'Technical'),
@@ -14,13 +16,8 @@ CATEGORIES =  [
 ]
 
 class AddSkills(models.Model):
-<<<<<<< HEAD
-    user = models.ForeignKey(User, related_name="skills", on_delete=models.CASCADE)
-    date = models.DateField()
-=======
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='userOffer')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userOffer')
     created = models.DateTimeField(auto_now_add=True)
->>>>>>> origin/skills
     title = models.CharField(max_length=100)
     category = models.CharField(max_length=2, choices=CATEGORIES, default='OT')
     availability = models.BooleanField()
@@ -38,13 +35,9 @@ class AddSkills(models.Model):
         return self.title
     
 class RequestSkills(models.Model):
-<<<<<<< HEAD
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-=======
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='userReq')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userReq')
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
->>>>>>> origin/skills
     category = models.CharField(max_length=2, choices=CATEGORIES, default='OT')
     location = models.CharField(max_length=100)
     description = models.TextField(max_length=200)
